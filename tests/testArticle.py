@@ -23,7 +23,7 @@ class TestArticle(unittest.TestCase):
         # then
         self.assertEqual(self.__id, self.__article.id)
         self.assertEqual(self.__description, self.__article.description)
-        self.assertEqual(self.__price, self.__article.price)
+        self.assertEqual(self.__article.price, self.__price)
 
     def test_description_short_description_return_new_value(self):
         # given
