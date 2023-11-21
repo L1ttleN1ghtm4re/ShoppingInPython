@@ -4,10 +4,12 @@ from shopping.article import *
 
 class TestArticle(unittest.TestCase):
 
+    # region private attributes
     __article = None
     __id = 0
     __description = ""
     __price = 0.0
+    # endregion private attributes
 
     def setUp(self):
         # Private attributes

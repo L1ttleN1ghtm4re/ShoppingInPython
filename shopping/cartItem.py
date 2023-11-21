@@ -3,6 +3,11 @@ from shopping.article import Article
 
 class CartItem:
 
+    # region private attributes
+    __article = None
+    __quantity = 0
+    # endregion private attributes
+
     def __init__(self, article_, quantity_):
         self.__article = Article
         self.__quantity = quantity_

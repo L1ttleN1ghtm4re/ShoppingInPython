@@ -1,5 +1,12 @@
 
 class Article:
+
+    # region private attributes
+    __id = 0
+    __description = ""
+    __price = 0.0
+    # endregion private attributes
+
     def __init__(self, id_, description, price):
         self.__id = id_
         self.__description = description

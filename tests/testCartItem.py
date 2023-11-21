@@ -5,9 +5,11 @@ from shopping.cartItem import *
 
 class TestCartItem(unittest.TestCase):
 
+    # region private attributes
     __cartItem = None
     __price = 0.00
     __quantity = 0
+    # endregion private attributes
 
     def setUp(self):
         self.__quantity = 1
