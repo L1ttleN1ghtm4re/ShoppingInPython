@@ -1,28 +1,30 @@
 
 class Article:
     def __init__(self, id_, description, price):
-        self._id = id_
-        self._description = description
-        self._price = price
+        self.__id = id_
+        self.__description = description
+        self.__price = price
 
     @property
     def id(self):
-        return self._id
+        return self.__id
 
     @property
     def description(self):
-        return self._description
+        return self.__description
 
     @description.setter
     def description(self, value):
-        self._description = value
+        self.__description = value
 
     @property
     def price(self):
-        return self._price
+        return self.__price
+
 
 class ArticleException(Exception):
     pass
+
 
 class SpecialCharInDescriptionException(ArticleException):
     pass
@@ -34,6 +36,7 @@ class TooShortDescriptionException(ArticleException):
 
 class TooLongDescriptionException(ArticleException):
     pass
+
 
 def check_description(description_to_check):
 
