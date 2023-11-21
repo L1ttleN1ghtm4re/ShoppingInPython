@@ -28,5 +28,23 @@ class TestCart(unittest.TestCase):
         self._cart.add(self.expectedCartItem)
         # then
 
-        self.assertEqual(self._cart.Count(), self.expectedArticlesquantity)
+        self.assertEqual(self._cart.Count(1), self.expectedarticlesquantity)
 
+    # def test_add_multiplesinglecartitems_success(self):
+
+    # def test_add_onemultiplecartitems_success(self):
+
+    # def test_price_emptycart_getprice(self):
+    #    expectedprice = 0.00
+
+    # def test_price_notemptycart_getprice(self):
+
+    # def test_priceaverage_uniquevalue_getaverage(self):
+
+    # def test_doesexist_byid_true(self):
+
+    # def test_doesexist_byid_false(self):
+
+    # def test_cheapest_uniquevalue_getarticleid(self):
+
+    # def test_mostexpensive_uniquevalue_getarticleid(self):
