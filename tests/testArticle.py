@@ -11,8 +11,8 @@ class TestArticle(unittest.TestCase):
     __price = 0.0
     # endregion private attributes
 
+    # region public methods
     def setUp(self):
-        # Private attributes
         self.__id = 1
         self.__description = "product description"
         self.__price = 20.45
@@ -21,10 +21,11 @@ class TestArticle(unittest.TestCase):
     def test_allProperties_afterInstantiation_success(self):
         # given
         # then
-        self.assertEqual(self.__id, self.__article.id)
-        self.assertEqual(self.__description, self.__article.description)
+        self.assertEqual(self.__article.id, self.__id)
+        self.assertEqual(self.__article.description, self.__description)
         self.assertEqual(self.__article.price, self.__price)
 
+    # region description
     def test_description_shortDescription_returnNewValue(self):
         # given
         self.expected_description = "After Shave"
@@ -35,7 +36,7 @@ class TestArticle(unittest.TestCase):
 
     def test_description_longDescription_returnNewValue(self):
         # given
-        self.expected_description = "A very long long long long long long descriptionn"
+        self.expected_description = "A very long long long long long long description"
         # when
         self.__article.description = self.expected_description
         # then
@@ -50,7 +51,7 @@ class TestArticle(unittest.TestCase):
         # then
         # throw exception
 
-    def test_description_descriptionContainIngSpecialChars_throwException(self):
+    def test_description_descriptionContainingSpecialChars_throwException(self):
         # given
 
         # when
@@ -67,6 +68,9 @@ class TestArticle(unittest.TestCase):
         # then
         # throw exception
 
+    # endregion description
+
+    # region price
     def test_price_updatePrice_getNewValue(self):
         # given
         self.expected_price = 12.20
@@ -74,6 +78,11 @@ class TestArticle(unittest.TestCase):
         self.__article.price = self.expected_price
         # then
         self.assertEqual(self.__article.price, self.expected_price)
+
+    # TODO: Add PriceUpdateWithNegativeValue => WrongPriceException
+    # TODO: Add PriceUpdateSameValue => WrongPriceException
+    # endregion price
+    # endregion public methods
 
 
 if __name__ == '__main__':

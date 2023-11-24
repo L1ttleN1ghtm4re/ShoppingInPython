@@ -30,7 +30,7 @@ class Article:
 
     @price.setter
     def price(self, value):
-        self.__price = float(value)
+        self.__price = value
 
 
 class ArticleException(Exception):
