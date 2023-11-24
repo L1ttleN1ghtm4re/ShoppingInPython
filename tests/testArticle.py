@@ -68,5 +68,14 @@ class TestArticle(unittest.TestCase):
         # throw exception
 
 
+    def test_SetPrice_CorrectValue_GetNewValue(self):
+        # given
+        self.expected_price = 12.20
+        # when
+        self.__article.price = self.expected_price
+        # then
+        self.assertEqual(self.__article.price, self.expected_price)
+
+
 if __name__ == '__main__':
     unittest.main()

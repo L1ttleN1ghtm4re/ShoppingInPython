@@ -1,6 +1,7 @@
 import unittest
 from tests.articleGenerator import ArticleGenerator
 from shopping.cartItem import *
+from shopping.article import Article
 
 
 class TestCartItem(unittest.TestCase):
@@ -13,8 +14,9 @@ class TestCartItem(unittest.TestCase):
 
     def setUp(self):
         self.__quantity = 1
-        self.__articles = [], ArticleGenerator.generate(1)
-        self.__cartItem = CartItem(self.__articles[0], self.__quantity)
+        self.__article = ArticleGenerator.generate(1)
+        # self.__article = self.__articles[0]
+        self.__cartItem = CartItem(self.__article, self.__quantity)
 
     def test_AllProperties_AfterInstantiation_Success(self):
         # given

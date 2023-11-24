@@ -28,6 +28,10 @@ class Article:
     def price(self):
         return self.__price
 
+    @price.setter
+    def price(self, value):
+        self.__price = value
+
 
 class ArticleException(Exception):
     pass
