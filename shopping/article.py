@@ -4,7 +4,7 @@ class Article:
     # region private attributes
     __id = 0
     __description = ""
-    __price = 0.0
+    __price = float(0.0)
     # endregion private attributes
 
     def __init__(self, id_, description, price):
@@ -30,7 +30,7 @@ class Article:
 
     @price.setter
     def price(self, value):
-        self.__price = value
+        self.__price = float(value)
 
 
 class ArticleException(Exception):

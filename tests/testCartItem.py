@@ -8,7 +8,7 @@ class TestCartItem(unittest.TestCase):
 
     # region private attributes
     __cartItem = None
-    __price = 0.00
+    __price = float(0.00)
     __quantity = 0
     # endregion private attributes
 
@@ -21,12 +21,12 @@ class TestCartItem(unittest.TestCase):
     def test_AllProperties_AfterInstantiation_Success(self):
         # given
         # refer to Setup
-        self._price = 2.00
+        self.__price = float(2.00)
         # when
         # Event will be triggered by constructor
-        self.__cartItem.article.price = self._price
+        self.__cartItem.article.price = self.__price
         # then
-        self.assertEqual(self.__cartItem.article.price, self._price)
+        self.assertEqual(self.__cartItem.article.price, self.__price)
         self.assertEqual(self.__cartItem.quantity, self.__quantity)
 
     def test_SetQuantity_CorrectValue_GetNewValue(self):

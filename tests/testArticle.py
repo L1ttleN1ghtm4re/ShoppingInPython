@@ -18,14 +18,14 @@ class TestArticle(unittest.TestCase):
         self.__price = 20.45
         self.__article = Article(self.__id, self.__description, self.__price)
 
-    def test_all_properties_after_instantiation_success(self):
+    def test_allProperties_afterInstantiation_success(self):
         # given
         # then
         self.assertEqual(self.__id, self.__article.id)
         self.assertEqual(self.__description, self.__article.description)
         self.assertEqual(self.__article.price, self.__price)
 
-    def test_description_short_description_return_new_value(self):
+    def test_description_shortDescription_returnNewValue(self):
         # given
         self.expected_description = "After Shave"
         # when
@@ -33,7 +33,7 @@ class TestArticle(unittest.TestCase):
         # then
         self.assertEqual(self.__article.description, self.expected_description)
 
-    def test_description_long_description_return_new_value(self):
+    def test_description_longDescription_returnNewValue(self):
         # given
         self.expected_description = "A very long long long long long long descriptionn"
         # when
@@ -41,7 +41,7 @@ class TestArticle(unittest.TestCase):
         # then
         self.assertEqual(self.__article.description, self.expected_description)
 
-    def test_description_single_word_description_throw_exception(self):
+    def test_description_singleWordDescription_throwException(self):
         # given
 
         # when
@@ -50,7 +50,7 @@ class TestArticle(unittest.TestCase):
         # then
         # throw exception
 
-    def test_description_descriptioncontainingspecialchars_throwexception(self):
+    def test_description_descriptionContainIngSpecialChars_throwException(self):
         # given
 
         # when
@@ -59,7 +59,7 @@ class TestArticle(unittest.TestCase):
         # then
         # throw exception
 
-    def test_description_toolongdescription_throwexception(self):
+    def test_description_tooLongDescription_throwException(self):
         # given
         # when
         with self.assertRaises(TooLongDescriptionException):
@@ -67,8 +67,7 @@ class TestArticle(unittest.TestCase):
         # then
         # throw exception
 
-
-    def test_SetPrice_CorrectValue_GetNewValue(self):
+    def test_price_updatePrice_getNewValue(self):
         # given
         self.expected_price = 12.20
         # when
