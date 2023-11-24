@@ -7,16 +7,15 @@ from shopping.article import Article
 class TestCartItem(unittest.TestCase):
 
     # region private attributes
-    __cartItem = None
+    __cartItem = CartItem
     __price = float(0.00)
     __quantity = 0
     # endregion private attributes
 
     def setUp(self):
         self.__quantity = 1
-        self.__article = ArticleGenerator.generate(1)
-        # self.__article = self.__articles[0]
-        self.__cartItem = CartItem(self.__article, self.__quantity)
+        self.__articles = ArticleGenerator.generate(1)
+        self.__cartItem = CartItem(self.__articles[0], self.__quantity)
 
     def test_AllProperties_AfterInstantiation_Success(self):
         # given

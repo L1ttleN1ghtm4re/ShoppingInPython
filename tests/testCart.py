@@ -12,7 +12,7 @@ class TestCart(unittest.TestCase):
     def setUp(self):
         self._cart = Cart
 
-    def test_add_firstsinglecartitem_success(self):
+    def test_add_firstSingleCartitem_success(self):
         # given
         # refer to setup
         self.expectedarticlesquantity = 1
