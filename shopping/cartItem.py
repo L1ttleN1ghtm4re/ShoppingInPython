@@ -4,7 +4,7 @@ from shopping.article import Article
 class CartItem:
 
     # region private attributes
-    __article = None
+    __article = Article
     __quantity = 0
     # endregion private attributes
 
