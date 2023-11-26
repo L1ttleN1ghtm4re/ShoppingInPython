@@ -6,13 +6,13 @@ from shopping.cart import Cart
 
 class TestCart(unittest.TestCase):
     # region private attributes
-    _cart = None
+    _cart: Cart
     # endregion private attributes
 
     def setUp(self):
-        self._cart = Cart
+        self._cart = Cart()
 
-    def test_add_firstSingleCartitem_success(self):
+    def test_add_firstSingleCartItem_success(self):
         # given
         # refer to setup
         self.expectedarticlesquantity = 1

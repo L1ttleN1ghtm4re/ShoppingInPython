@@ -4,7 +4,9 @@ class Article:
     # region private attributes
     __id = 0
     __description = ""
-    __price = float(0.0)
+    __price = 0.0
+    # TODO: attributes indicate type ex: __price:float =0.0
+
     # endregion private attributes
 
     def __init__(self, id_, description, price):
@@ -15,6 +17,7 @@ class Article:
     @property
     def id(self):
         return self.__id
+    # TODO : indicate return type ex: def id(self) -> int:
 
     @property
     def description(self):
@@ -31,10 +34,12 @@ class Article:
     @price.setter
     def price(self, value):
         self.__price = value
+    # NOTE : could indicate there's none to return ex : -> none:
 
 
 class ArticleException(Exception):
     pass
+# should have his own page for any exception
 
 
 class SpecialCharInDescriptionException(ArticleException):
@@ -49,6 +54,7 @@ class TooLongDescriptionException(ArticleException):
     pass
 
 
+# TODO : change place
 def check_description(description_to_check):
 
     special_chars = ['!', '*', '+', '/']
