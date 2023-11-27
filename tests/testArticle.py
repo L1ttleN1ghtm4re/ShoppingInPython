@@ -5,10 +5,10 @@ from shopping.article import *
 class TestArticle(unittest.TestCase):
 
     # region private attributes
-    __article = Article
-    __id = 0
-    __description = ""
-    __price = 0.0
+    __article: Article = Article
+    __id: int = 0
+    __description: str = ""
+    __price: float = 0.0
     # endregion private attributes
 
     # region public methods

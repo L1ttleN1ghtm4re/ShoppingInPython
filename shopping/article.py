@@ -2,10 +2,9 @@
 class Article:
 
     # region private attributes
-    __id = 0
-    __description = ""
-    __price = 0.0
-    # TODO: attributes indicate type ex: __price:float =0.0
+    __id: int = 0
+    __description: str = ""
+    __price: float = 0.0
 
     # endregion private attributes
 
@@ -15,26 +14,42 @@ class Article:
         self.__price = price
 
     @property
-    def id(self):
+    def id(self) -> int:
         return self.__id
-    # TODO : indicate return type ex: def id(self) -> int:
 
     @property
-    def description(self):
+    def description(self) -> str:
         return self.__description
 
     @description.setter
-    def description(self, value):
+    def description(self, value) -> None:
         self.__description = value
 
     @property
-    def price(self):
+    def price(self) -> float:
         return self.__price
 
     @price.setter
-    def price(self, value):
+    def price(self, value) -> None:
         self.__price = value
     # NOTE : could indicate there's none to return ex : -> none:
+
+
+def check_description(description_to_check):
+
+    special_chars = ['!', '*', '+', '/']
+
+    for special_char in special_chars:
+        if special_char in description_to_check:
+            raise SpecialCharInDescriptionException()
+
+    if len(description_to_check.split(' ')) == 1:
+        raise TooShortDescriptionException()
+
+    if len(description_to_check) > 50:
+        raise TooLongDescriptionException()
+
+    return True
 
 
 class ArticleException(Exception):
@@ -52,24 +67,6 @@ class TooShortDescriptionException(ArticleException):
 
 class TooLongDescriptionException(ArticleException):
     pass
-
-
-# TODO : change place
-def check_description(description_to_check):
-
-    special_chars = ['!', '*', '+', '/']
-
-    for special_char in special_chars:
-        if special_char in description_to_check:
-            raise SpecialCharInDescriptionException()
-
-    if len(description_to_check.split(' ')) == 1:
-        raise TooShortDescriptionException()
-
-    if len(description_to_check) > 50:
-        raise TooLongDescriptionException()
-
-    return True
 
 
 # Appel de la fonction avec gestion des exceptions

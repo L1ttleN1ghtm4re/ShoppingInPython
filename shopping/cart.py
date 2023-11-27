@@ -3,7 +3,7 @@ from shopping.cartItem import CartItem
 
 class Cart:
     # region private attributes
-    __cartItems = [CartItem]
+    __cartItems: CartItem = [CartItem]
     # endregion private attributes
 
     def add(self):
