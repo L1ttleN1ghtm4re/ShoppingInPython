@@ -6,7 +6,7 @@ from shopping.cartItem import *
 class TestCartItem(unittest.TestCase):
 
     # region private attributes
-    __cartItem = None
+    __cartItem = CartItem
     __price = 0.00
     __quantity = 0
     # endregion private attributes

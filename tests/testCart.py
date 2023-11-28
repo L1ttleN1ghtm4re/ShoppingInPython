@@ -6,11 +6,11 @@ from shopping.cart import Cart
 
 class TestCart(unittest.TestCase):
     # region private attributes
-    _cart: Cart = None
+    __cart = Cart
     # endregion private attributes
 
     def setUp(self):
-        self._cart: Cart = Cart()
+        self.__cart = Cart()
 
     def test_add_firstsinglecartitem_success(self):
         # given
@@ -21,14 +21,13 @@ class TestCart(unittest.TestCase):
         self.expected_article_in_cartitem: int = 1
         self.expected_cartitem: CartItem = CartItem(self.expected_articles[0], self.expected_article_in_cartitem)
         self.expected_cartitems: [CartItem] = self.expected_cartitem
-        self.assertEqual(0, len(self._cart.cartitems))
+        self.assertEqual(0, len(self.__cart.cartitems))
 
         # when
-        self._cart.cartitems.append(self.expected_cartitems)
+        self.__cart.cartitems.append(self.expected_cartitems)
         # then
-
-        self.assertEqual(self.expected_articles_quantity, len(self._cart.cartitems))
-        self.assertEqual(self._cart.cartitems, self.expected_cartitems)
+        self.assertEqual(self.expected_articles_quantity, len(self.__cart.cartitems))
+        self.assertEqual(self.__cart.cartitems, self.expected_cartitems)
 
     # def test_add_multipleSingleCartItems_success(self):
 
