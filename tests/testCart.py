@@ -12,24 +12,45 @@ class TestCart(unittest.TestCase):
     def setUp(self):
         self.__cart = Cart()
 
-    def test_add_firstsinglecartitem_success(self):
+    def test_add_firstSingleCartItem_success(self):
         # given
         # refer to setup
-        self.expected_articles_quantity: int = 1
-        self.expected_articles: list = [ArticleGenerator.generate(self.expected_articles_quantity)]
+        self.expectedArticlesQuantity: int = 1
+        self.expectedArticles: list = ArticleGenerator.generate(self.expectedArticlesQuantity)
 
-        self.expected_article_in_cartitem: int = 1
-        self.expected_cartitem: CartItem = CartItem(self.expected_articles[0], self.expected_article_in_cartitem)
-        self.expected_cartitems: [CartItem] = self.expected_cartitem
+        self.expectedArticleInCartItem: int = 1
+        self.expectedCartItem: CartItem = CartItem(self.expectedArticles[0], self.expectedArticleInCartItem)
+        self.expectedCartItems: [CartItem] = self.expectedCartItem
         self.assertEqual(0, len(self.__cart.cartitems))
 
         # when
-        self.__cart.cartitems.append(self.expected_cartitems)
-        # then
-        self.assertEqual(self.expected_articles_quantity, len(self.__cart.cartitems))
-        self.assertEqual(self.__cart.cartitems, self.expected_cartitems)
+        self.__cart.cartitems.append(self.expectedCartItem)
 
-    # def test_add_multipleSingleCartItems_success(self):
+        # then
+        self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
+        self.assertEqual([self.expectedCartItem], self.__cart.cartitems)
+
+    def test_add_multipleSingleCartItems_success(self):
+        # given
+        # refer to setup
+        self.expectedArticlesQuantity: int = 2
+        self.expectedArticles: list = ArticleGenerator.generate(self.expectedArticlesQuantity)
+
+        self.expectedQuantity1: int = 1
+        self.expectedCartItem1: CartItem = CartItem(self.expectedArticles[0], self.expectedQuantity1)
+
+        self.expectedQuantity2: int = 1
+        self.expectedCartItem2: CartItem = CartItem(self.expectedArticles[1], self.expectedQuantity2)
+
+        self.expectedCartItems: [CartItem] = [self.expectedCartItem1, self.expectedCartItem2]
+        self.assertEqual(0, len(self.__cart.cartitems))
+
+        # when
+        self.__cart.cartitems.append(self.expectedCartItems)
+
+        # then
+        self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
+        self.assertEqual([self.expectedCartItems], self.__cart.cartitems)
 
     # def test_add_onemultiplecartitems_success(self):
 

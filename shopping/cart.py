@@ -6,8 +6,8 @@ class Cart:
     __cartItems: [CartItem] = []
     # endregion private attributes
 
-    def add(self):
-        raise NotImplementedError
+    def add(self, addcartitems):
+        self.__cartItems = addcartitems
 
     def remove(self):
         raise NotImplementedError
