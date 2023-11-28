@@ -28,7 +28,7 @@ class TestCart(unittest.TestCase):
 
         # then
         self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
-        self.assertEqual([self.expectedCartItem], self.__cart.cartitems)
+        self.assertEqual(self.expectedCartItem, self.__cart.cartitems[0])
 
     def test_add_multipleSingleCartItems_success(self):
         # given
@@ -46,11 +46,11 @@ class TestCart(unittest.TestCase):
         self.assertEqual(0, len(self.__cart.cartitems))
 
         # when
-        self.__cart.cartitems.append(self.expectedCartItems)
+        self.__cart.add(self.expectedCartItems)
 
         # then
         self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
-        self.assertEqual([self.expectedCartItems], self.__cart.cartitems)
+        self.assertEqual(self.expectedCartItems, self.__cart.cartitems)
 
     # def test_add_onemultiplecartitems_success(self):
 

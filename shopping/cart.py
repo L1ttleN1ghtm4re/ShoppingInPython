@@ -9,8 +9,8 @@ class Cart:
     def __init__(self):
         self.__cartItems = []
 
-    def add(self, addcartitems):
-        self.__cartItems = addcartitems
+    def add(self, cartitemsToAdd):
+        self.__cartItems.extend(cartitemsToAdd)
 
     def remove(self):
         raise NotImplementedError
