@@ -6,31 +6,31 @@ from shopping.cart import Cart
 
 class TestCart(unittest.TestCase):
     # region private attributes
-    _cart = None
+    _cart: Cart = None
     # endregion private attributes
 
     def setUp(self):
-        self._cart = Cart
+        self._cart: Cart = Cart()
 
     def test_add_firstsinglecartitem_success(self):
         # given
         # refer to setup
-        self.expectedarticlesquantity = 1
-        self.expectedarticles = []
-        self.expectedarticles = ArticleGenerator.generate(self.expectedarticlesquantity)
+        self.expected_articles_quantity: int = 1
+        self.expected_articles: list = [ArticleGenerator.generate(self.expected_articles_quantity)]
 
-        self.expectedarticleincartitem = 1
-        self.expectedcartitem = CartItem(self.expectedarticles[0], self.expectedarticleincartitem)
-        self.expectedcartitems = [self.expectedcartitem]
+        self.expected_article_in_cartitem: int = 1
+        self.expected_cartitem: CartItem = CartItem(self.expected_articles[0], self.expected_article_in_cartitem)
+        self.expected_cartitems: [CartItem] = self.expected_cartitem
         self.assertEqual(0, len(self._cart.cartitems))
 
         # when
-
+        self._cart.cartitems.append(self.expected_cartitems)
         # then
 
-        # self.assertEqual(self._cart.Count(1), self.expectedarticlesquantity)
+        self.assertEqual(self.expected_articles_quantity, len(self._cart.cartitems))
+        self.assertEqual(self._cart.cartitems, self.expected_cartitems)
 
-    # def test_add_multiplesinglecartitems_success(self):
+    # def test_add_multipleSingleCartItems_success(self):
 
     # def test_add_onemultiplecartitems_success(self):
 

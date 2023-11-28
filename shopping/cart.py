@@ -3,7 +3,7 @@ from shopping.cartItem import CartItem
 
 class Cart:
     # region private attributes
-    _cartItems = CartItem
+    __cartItems: [CartItem] = [CartItem]
     # endregion private attributes
 
     def add(self):
@@ -12,8 +12,9 @@ class Cart:
     def remove(self):
         raise NotImplementedError
 
-    def cartitems(self):
-        raise NotImplementedError
+    @property
+    def cartitems(self) -> [CartItem]:
+        return self.__cartItems
 
     def doesexist(self):
         raise NotImplementedError
