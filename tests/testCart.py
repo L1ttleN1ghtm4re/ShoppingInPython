@@ -15,12 +15,12 @@ class TestCart(unittest.TestCase):
     def test_add_firstSingleCartItem_success(self):
         # given
         # refer to setup
-        self.expectedArticlesQuantity: int = 1
-        self.expectedArticles: list = ArticleGenerator.generate(self.expectedArticlesQuantity)
+        self.expectedArticlesQuantity = 1
+        self.expectedArticles = ArticleGenerator.generate(self.expectedArticlesQuantity)
 
-        self.expectedArticleInCartItem: int = 1
-        self.expectedCartItem: CartItem = CartItem(self.expectedArticles[0], self.expectedArticleInCartItem)
-        self.expectedCartItems: [CartItem] = self.expectedCartItem
+        self.expectedArticleInCartItem = 1
+        self.expectedCartItem = CartItem(self.expectedArticles[0], self.expectedArticleInCartItem)
+        self.expectedCartItems = self.expectedCartItem
         self.assertEqual(0, len(self.__cart.cartitems))
 
         # when
