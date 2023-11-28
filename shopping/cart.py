@@ -6,6 +6,9 @@ class Cart:
     __cartItems = []
     # endregion private attributes
 
+    def __init__(self):
+        self.__cartItems = []
+
     def add(self, addcartitems):
         self.__cartItems = addcartitems
 

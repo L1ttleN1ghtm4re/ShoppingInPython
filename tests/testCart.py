@@ -34,15 +34,15 @@ class TestCart(unittest.TestCase):
         # given
         # refer to setup
         self.expectedArticlesQuantity: int = 2
-        self.expectedArticles: list = ArticleGenerator.generate(self.expectedArticlesQuantity)
+        self.expectedArticles = ArticleGenerator.generate(self.expectedArticlesQuantity)
 
-        self.expectedQuantity1: int = 1
-        self.expectedCartItem1: CartItem = CartItem(self.expectedArticles[0], self.expectedQuantity1)
+        self.expectedQuantity1 = 1
+        self.expectedCartItem1 = CartItem(self.expectedArticles[0], self.expectedQuantity1)
 
-        self.expectedQuantity2: int = 1
-        self.expectedCartItem2: CartItem = CartItem(self.expectedArticles[1], self.expectedQuantity2)
+        self.expectedQuantity2 = 1
+        self.expectedCartItem2 = CartItem(self.expectedArticles[1], self.expectedQuantity2)
 
-        self.expectedCartItems: [CartItem] = [self.expectedCartItem1, self.expectedCartItem2]
+        self.expectedCartItems = [self.expectedCartItem1, self.expectedCartItem2]
         self.assertEqual(0, len(self.__cart.cartitems))
 
         # when
