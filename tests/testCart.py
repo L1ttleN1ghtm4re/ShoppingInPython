@@ -24,7 +24,7 @@ class TestCart(unittest.TestCase):
         self.assertEqual(0, len(self.__cart.cartitems))
 
         # when
-        self.__cart.cartitems.append(self.expectedCartItem)
+        self.__cart.add(self.expectedCartItems)
 
         # then
         self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
@@ -52,7 +52,23 @@ class TestCart(unittest.TestCase):
         self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
         self.assertEqual(self.expectedCartItems, self.__cart.cartitems)
 
-    # def test_add_onemultiplecartitems_success(self):
+    def test_add_onemultiplecartitems_success(self):
+        # given
+        # refer to Setup
+        self.expectedArticlesQuantity: int = 1
+        self.expectedArticles = ArticleGenerator.generate(self.expectedArticlesQuantity)
+
+        self.expectedArticleInCartItem: int = 2
+        self.expectedCartItem = CartItem(self.expectedArticles[0], self.expectedArticleInCartItem)
+        self.expectedCartItems = self.expectedCartItem
+        self.assertEqual(0, len(self.__cart.cartitems))
+
+        # when
+        self.__cart.add(self.expectedCartItems)
+
+        # then
+        self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
+        self.assertEqual(self.expectedCartItems, self.__cart.cartitems)
 
     # def test_price_emptycart_getprice(self):
     #    expectedprice = 0.00
