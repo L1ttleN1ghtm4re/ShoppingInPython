@@ -20,7 +20,7 @@ class TestCart(unittest.TestCase):
 
         self.expectedArticleInCartItem = 1
         self.expectedCartItem = CartItem(self.expectedArticles[0], self.expectedArticleInCartItem)
-        self.expectedCartItems = self.expectedCartItem
+        self.expectedCartItems = [self.expectedCartItem]
         self.assertEqual(0, len(self.__cart.cartitems))
 
         # when
@@ -60,7 +60,7 @@ class TestCart(unittest.TestCase):
 
         self.expectedArticleInCartItem: int = 2
         self.expectedCartItem = CartItem(self.expectedArticles[0], self.expectedArticleInCartItem)
-        self.expectedCartItems = self.expectedCartItem
+        self.expectedCartItems = [self.expectedCartItem]
         self.assertEqual(0, len(self.__cart.cartitems))
 
         # when
