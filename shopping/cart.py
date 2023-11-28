@@ -19,6 +19,9 @@ class Cart:
     def cartitems(self) -> [CartItem]:
         return self.__cartItems
 
+    def price(self, average: bool = False):
+        raise NotImplementedError
+
     def doesexist(self):
         raise NotImplementedError
 

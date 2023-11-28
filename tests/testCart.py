@@ -70,8 +70,11 @@ class TestCart(unittest.TestCase):
         self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
         self.assertEqual(self.expectedCartItems, self.__cart.cartitems)
 
-    # def test_price_emptycart_getprice(self):
-    #    expectedprice = 0.00
+    def test_price_emptycart_getprice(self):
+
+        self.expectedprice = 0.00
+
+        self.assertEqual(self.expectedprice, self.__cart.price())
 
     # def test_price_notemptycart_getprice(self):
 
