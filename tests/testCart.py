@@ -70,13 +70,22 @@ class TestCart(unittest.TestCase):
         self.assertEqual(self.expectedArticlesQuantity, len(self.__cart.cartitems))
         self.assertEqual(self.expectedCartItems, self.__cart.cartitems)
 
-    def test_price_emptycart_getprice(self):
+    def test_price_emptyCart_getPrice(self):
 
         self.expectedprice = 0.00
 
         self.assertEqual(self.expectedprice, self.__cart.price())
 
-    # def test_price_notemptycart_getprice(self):
+    def test_price_notEmptyCart_getPrice(self):
+        self.expectedArticles = ArticleGenerator.generate(5)
+        self.cartitems = CartItem
+
+        for articles in self.expectedArticles:
+            self.__cart.add([self.cartitems(articles, 1)])
+        self.expectedPrice = 30.00
+        self.__cart.add([self.expectedPrice])
+
+        self.assertEqual(self.expectedPrice, self.__cart.price())
 
     # def test_priceaverage_uniquevalue_getaverage(self):
 
