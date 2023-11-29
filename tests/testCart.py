@@ -77,6 +77,7 @@ class TestCart(unittest.TestCase):
         self.assertEqual(self.expectedprice, self.__cart.price())
 
     def test_price_notEmptyCart_getPrice(self):
+        #given
         self.expectedArticles = ArticleGenerator.generate(5)
         self.cartitems = CartItem
 
@@ -84,10 +85,23 @@ class TestCart(unittest.TestCase):
             self.__cart.add([self.cartitems(articles, 1)])
         self.expectedPrice = 30.00
         self.__cart.add([self.expectedPrice])
+        # when
+
+        # then
 
         self.assertEqual(self.expectedPrice, self.__cart.price())
 
-    # def test_priceaverage_uniquevalue_getaverage(self):
+    def test_priceaverage_uniquevalue_getaverage(self):
+        # given
+        self.expectedArticles = ArticleGenerator.generate(5)
+        self.cartitems = CartItem
+        for articles in self.expectedArticles:
+            self.__cart.add([self.cartitems(articles, 1)])
+        self.__cart.add([self.cartitems])
+        # when
+
+        # then
+        self.assertEqual(6, self.__cart.price(True))
 
     # def test_doesexist_byid_true(self):
 
