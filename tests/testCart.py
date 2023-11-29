@@ -138,4 +138,16 @@ class TestCart(unittest.TestCase):
 
         # then
         self.assertEqual(1, self.__cart.cheapest())
-    # def test_mostexpensive_uniquevalue_getarticleid(self):
+
+    def test_mostexpensive_uniquevalue_getarticleid(self):
+        # given
+        self.expectedArticles = ArticleGenerator.generate(10)
+        self.cartitems = CartItem
+        for articles in self.expectedArticles:
+            self.__cart.add([self.cartitems(articles, 1)])
+        self.__cart.add([self.cartitems])
+        # when
+
+        # then
+        self.assertEqual(10, self.__cart.mostexpensive())
+
