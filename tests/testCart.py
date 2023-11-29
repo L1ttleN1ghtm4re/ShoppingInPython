@@ -77,7 +77,7 @@ class TestCart(unittest.TestCase):
         self.assertEqual(self.expectedprice, self.__cart.price())
 
     def test_price_notEmptyCart_getPrice(self):
-        #given
+        # given
         self.expectedArticles = ArticleGenerator.generate(5)
         self.cartitems = CartItem
 
@@ -127,6 +127,15 @@ class TestCart(unittest.TestCase):
         # then
         self.assertTrue(self.__cart.doesexist(999))
 
-    # def test_cheapest_uniquevalue_getarticleid(self):
+    def test_cheapest_uniquevalue_getarticleid(self):
+        # given
+        self.expectedArticles = ArticleGenerator.generate(10)
+        self.cartitems = CartItem
+        for articles in self.expectedArticles:
+            self.__cart.add([self.cartitems(articles, 1)])
+        self.__cart.add([self.cartitems])
+        # when
 
+        # then
+        self.assertEqual(1, self.__cart.cheapest())
     # def test_mostexpensive_uniquevalue_getarticleid(self):
