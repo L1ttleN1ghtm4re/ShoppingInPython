@@ -160,8 +160,20 @@ class TestCart(unittest.TestCase):
             self.__cart.add([self.cartitems(articles, 1)])
         self.__cart.add([self.cartitems])
         # when
-        self.assertRaises(ArticleNotFoundException)
+        self.assertEqual(29.60, self.__cart.price())
         # then
         # throw exception
 
-    # ApplyDiscountById_ArticleDoesNotExist_ThrowException(self):
+    def ApplyDiscountById_ArticleDoesNotExist_ThrowException(self):
+        # given
+        self.discounttoapply = 0.1
+        self.articletoapplydiscount = 45
+        self.expectedArticles = ArticleGenerator.generate(5)
+        self.cartitems = CartItem
+        for articles in self.expectedArticles:
+            self.__cart.add([self.cartitems(articles, 1)])
+        self.__cart.add([self.cartitems])
+        # when
+        self.assertRaises(ArticleNotFoundException)
+        # then
+        # throw exception
