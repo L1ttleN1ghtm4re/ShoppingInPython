@@ -103,9 +103,29 @@ class TestCart(unittest.TestCase):
         # then
         self.assertEqual(6, self.__cart.price(True))
 
-    # def test_doesexist_byid_true(self):
+    def test_doesexist_byid_true(self):
+        # given
+        self.expectedArticles = ArticleGenerator.generate(10)
+        self.cartitems = CartItem
+        for articles in self.expectedArticles:
+            self.__cart.add([self.cartitems(articles, 1)])
+        self.__cart.add([self.cartitems])
+        # when
 
-    # def test_doesexist_byid_false(self):
+        # then
+        self.assertTrue(self.__cart.doesexist(10))
+
+    def test_doesexist_byid_false(self):
+        # given
+        self.expectedArticles = ArticleGenerator.generate(10)
+        self.cartitems = CartItem
+        for articles in self.expectedArticles:
+            self.__cart.add([self.cartitems(articles, 1)])
+        self.__cart.add([self.cartitems])
+        # when
+
+        # then
+        self.assertTrue(self.__cart.doesexist(999))
 
     # def test_cheapest_uniquevalue_getarticleid(self):
 
