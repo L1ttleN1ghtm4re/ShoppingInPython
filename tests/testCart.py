@@ -1,7 +1,6 @@
 import unittest
 from tests.articleGenerator import ArticleGenerator
-from shopping.cartItem import CartItem
-from shopping.cart import Cart
+from shopping.cart import *
 
 
 class TestCart(unittest.TestCase):
@@ -151,3 +150,18 @@ class TestCart(unittest.TestCase):
         # then
         self.assertEqual(10, self.__cart.mostexpensive())
 
+    def ApplyDiscountById_ArticleExists_PriceUpdated(self):
+        # given
+        self.discounttoapply = 0.1
+        self.articletoapplydiscount = 45
+        self.expectedArticles = ArticleGenerator.generate(5)
+        self.cartitems = CartItem
+        for articles in self.expectedArticles:
+            self.__cart.add([self.cartitems(articles, 1)])
+        self.__cart.add([self.cartitems])
+        # when
+        self.assertRaises(ArticleNotFoundException)
+        # then
+        # throw exception
+
+    # ApplyDiscountById_ArticleDoesNotExist_ThrowException(self):

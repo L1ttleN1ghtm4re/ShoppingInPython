@@ -22,7 +22,7 @@ class Cart:
     def price(self, average: bool = False):
         raise NotImplementedError
 
-    def doesexist(self,articleid):
+    def doesexist(self, articleid):
         raise NotImplementedError
 
     def cheapest(self):
@@ -30,3 +30,11 @@ class Cart:
 
     def mostexpensive(self):
         raise NotImplementedError
+
+
+class CartException(Exception):
+    pass
+
+
+class ArticleNotFoundException(CartException):
+    pass
