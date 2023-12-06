@@ -20,7 +20,15 @@ class Cart:
         return self.__cartItems
 
     def price(self, average: bool = False):
-        raise NotImplementedError
+        self.currentcartprice = 0.00
+        self.currentcartiemlen = len(self.__cartItems)
+        for self.cartItem in self.__cartItems:
+            self.currentcartprice = self.__cartItems[0].article.price
+
+        if average:
+            return self.currentcartprice / self.currentcartiemlen
+
+        return self.currentcartprice
 
     def doesexist(self, articleid):
         raise NotImplementedError

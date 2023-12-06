@@ -25,7 +25,7 @@ class Article:
         self.__description = value
 
     @property
-    def price(self):
+    def price(self) -> int:
         return self.__price
 
 
