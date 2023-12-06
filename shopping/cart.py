@@ -1,3 +1,4 @@
+import this
 from shopping.cartItem import CartItem
 
 
@@ -16,28 +17,43 @@ class Cart:
         raise NotImplementedError
 
     @property
-    def cartitems(self) -> [CartItem]:
+    def cartitems(self):
         return self.__cartItems
 
     def price(self, average: bool = False):
-        self.currentcartprice = 0.00
-        self.currentcartiemlen = len(self.__cartItems)
+        currentcartprice = 0.00
+        currentcartiemlen = len(self.__cartItems)
         for self.cartItem in self.__cartItems:
-            self.currentcartprice = self.__cartItems[0].article.price
-
+            currentcartprice = self.__cartItems[0].article.price
         if average:
-            return self.currentcartprice / self.currentcartiemlen
-
-        return self.currentcartprice
+            return currentcartprice / currentcartiemlen
+        return currentcartprice
 
     def doesexist(self, articleid):
-        raise NotImplementedError
+        for cartItem in self.__cartItems:
+            if cartItem.article.id == articleid:
+                return True
+        return False
 
     def cheapest(self):
-        raise NotImplementedError
+        currentchepeastarticleid = self.__cartItems[0].article.id
+        for cartItem in self.__cartItems:
+            if cartItem.article.price < this.getarticlebyid(currentchepeastarticleid).price:
+                currentchepeastarticleid = cartItem.article.id
+        return currentchepeastarticleid
 
     def mostexpensive(self):
-        raise NotImplementedError
+        currentchepeastarticleid = self.__cartItems[0].article.id
+        for cartItem in self.__cartItems:
+            if cartItem.article.price > this.getarticlebyid(currentchepeastarticleid).price:
+                currentchepeastarticleid = cartItem.article.id
+        return currentchepeastarticleid
+
+    def getarticlebyid(self, articleid):
+        for cartItem in self.__cartItems:
+            if cartItem.article.id == articleid:
+                return cartItem.article
+        return None
 
 
 class CartException(Exception):

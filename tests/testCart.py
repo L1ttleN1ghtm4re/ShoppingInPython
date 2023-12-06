@@ -124,7 +124,7 @@ class TestCart(unittest.TestCase):
         # when
 
         # then
-        self.assertTrue(self.__cart.doesexist(999))
+        self.assertFalse(self.__cart.doesexist(999))
 
     def test_cheapest_uniqueValue_getArticleId(self):
         # given
