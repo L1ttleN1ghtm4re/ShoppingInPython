@@ -24,11 +24,10 @@ class Cart:
 
     def price(self, average: bool = False):
         currentcartprice = 0.00
-        currentcartiemlen = len(self.__cartItems)
-        for self.cartItem in self.__cartItems:
-            currentcartprice = self.__cartItems[0].article.price
+        for cartItem in self.__cartItems:
+            currentcartprice += cartItem.article.price * cartItem.quantity
         if average:
-            return currentcartprice / currentcartiemlen
+            return currentcartprice / len(self.__cartItems)
         return currentcartprice
 
     def doesexist(self, articleid):
@@ -39,14 +38,14 @@ class Cart:
     def cheapest(self):
         currentchepeastarticleid = self.__cartItems[0].article.id
         for cartItem in self.__cartItems:
-            if cartItem.article.price < this.getarticlebyid(currentchepeastarticleid).price:
+            if cartItem.article.price < self.getarticlebyid(currentchepeastarticleid).price:
                 currentchepeastarticleid = cartItem.article.id
         return currentchepeastarticleid
 
     def mostexpensive(self):
         currentchepeastarticleid = self.__cartItems[0].article.id
         for cartItem in self.__cartItems:
-            if cartItem.article.price > this.getarticlebyid(currentchepeastarticleid).price:
+            if cartItem.article.price > self.getarticlebyid(currentchepeastarticleid).price:
                 currentchepeastarticleid = cartItem.article.id
         return currentchepeastarticleid
 
