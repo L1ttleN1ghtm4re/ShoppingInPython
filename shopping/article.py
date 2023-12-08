@@ -2,19 +2,19 @@
 class Article:
 
     # region private attributes
-    __id = 0
+    __articleid = 0
     __description = ""
     __price = 0.0
     # endregion private attributes
 
     def __init__(self, articleid, description, price):
-        self.__id = articleid
+        self.__articleid = articleid
         self.__description = description
         self.__price = price
 
     @property
     def id(self):
-        return self.__id
+        return self.__articleid
 
     @property
     def description(self):
