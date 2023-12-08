@@ -13,7 +13,7 @@ class TestCartItem(unittest.TestCase):
 
     def setUp(self):
         self.__quantity = 1
-        self.__articles = [], ArticleGenerator.generate(1)
+        self.__articles = ArticleGenerator.generate(1)
         self.__cartItem = CartItem(self.__articles[0], self.__quantity)
 
     def test_AllProperties_AfterInstantiation_Success(self):
@@ -22,7 +22,7 @@ class TestCartItem(unittest.TestCase):
         self._price = 2.00
         # when
         # Event will be triggered by constructor
-        self.__cartItem.article.price = self._price
+
         # then
         self.assertEqual(self.__cartItem.article.price, self._price)
         self.assertEqual(self.__cartItem.quantity, self.__quantity)

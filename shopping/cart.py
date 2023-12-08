@@ -5,13 +5,15 @@ from shopping.cartItem import CartItem
 class Cart:
     # region private attributes
     __cartItems = []
+
     # endregion private attributes
 
     def __init__(self):
         self.__cartItems = []
 
     def add(self, cartitems_to_add):
-        self.__cartItems.extend(cartitems_to_add)
+        for cartItem in cartitems_to_add:
+            self.__cartItems.append(cartItem)
 
     def remove(self):
         raise NotImplementedError
@@ -30,10 +32,9 @@ class Cart:
         return currentcartprice
 
     def doesexist(self, articleid):
-        for cartItem in self.__cartItems:
-            if cartItem.article.id == articleid:
-                return True
-        return False
+        if self.getarticlebyid(articleid) is None:
+            return False
+        return True
 
     def cheapest(self):
         currentchepeastarticleid = self.__cartItems[0].article.id

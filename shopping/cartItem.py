@@ -8,9 +8,9 @@ class CartItem:
     __quantity = 0
     # endregion private attributes
 
-    def __init__(self, article_, quantity_):
-        self.__article = Article
-        self.__quantity = quantity_
+    def __init__(self, article, quantity):
+        self.__article = article
+        self.__quantity = quantity
 
     @property
     def article(self):

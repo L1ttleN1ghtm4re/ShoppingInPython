@@ -105,7 +105,7 @@ class TestCart(unittest.TestCase):
     def test_doesExist_byid_true(self):
         # given
         self.expectedArticles = ArticleGenerator.generate(10)
-        self.cartItems = CartItem
+        self.cartItems = []
         for articles in self.expectedArticles:
             self.__cart.add([self.cartItems(articles, 1)])
         self.__cart.add([self.cartItems])
@@ -117,10 +117,11 @@ class TestCart(unittest.TestCase):
     def test_doesExist_byid_false(self):
         # given
         self.expectedArticles = ArticleGenerator.generate(10)
-        self.cartItems = CartItem
-        for articles in self.expectedArticles:
-            self.__cart.add([self.cartItems(articles, 1)])
-        self.__cart.add([self.cartItems])
+        self.cartItems = []
+        for article in self.expectedArticles:
+            cartitem = CartItem(article, 1)
+            self.cartItems.append(cartitem)
+        self.__cart.add(self.cartItems)
         # when
 
         # then
@@ -129,7 +130,7 @@ class TestCart(unittest.TestCase):
     def test_cheapest_uniqueValue_getArticleId(self):
         # given
         self.expectedArticles = ArticleGenerator.generate(10)
-        self.cartItems = CartItem
+        self.cartItems = []
         for articles in self.expectedArticles:
             self.__cart.add([self.cartItems(articles, 1)])
         self.__cart.add([self.cartItems])
@@ -141,7 +142,7 @@ class TestCart(unittest.TestCase):
     def test_mostExpensive_uniqueValue_getArticleId(self):
         # given
         self.expectedArticles = ArticleGenerator.generate(10)
-        self.cartItems = CartItem
+        self.cartItems = []
         for articles in self.expectedArticles:
             self.__cart.add([self.cartItems(articles, 1)])
         self.__cart.add([self.cartItems])
@@ -155,7 +156,7 @@ class TestCart(unittest.TestCase):
         self.discountToApply = 0.1
         self.articleToApplyDiscount = 45
         self.expectedArticles = ArticleGenerator.generate(5)
-        self.cartItems = CartItem
+        self.cartItems = []
         for articles in self.expectedArticles:
             self.__cart.add([self.cartItems(articles, 1)])
         self.__cart.add([self.cartItems])
@@ -169,7 +170,7 @@ class TestCart(unittest.TestCase):
         self.discountToApply = 0.1
         self.articleToApplyDiscount = 45
         self.expectedArticles = ArticleGenerator.generate(5)
-        self.cartItems = CartItem
+        self.cartItems = []
         for articles in self.expectedArticles:
             self.__cart.add([self.cartItems(articles, 1)])
         self.__cart.add([self.cartItems])

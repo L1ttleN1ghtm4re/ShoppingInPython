@@ -7,8 +7,8 @@ class Article:
     __price = 0.0
     # endregion private attributes
 
-    def __init__(self, id_, description, price):
-        self.__id = id_
+    def __init__(self, articleid, description, price):
+        self.__id = articleid
         self.__description = description
         self.__price = price
 
