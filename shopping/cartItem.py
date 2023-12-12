@@ -4,8 +4,8 @@ from shopping.article import Article
 class CartItem:
 
     # region private attributes
-    __article: Article = Article
-    __quantity: int = 0
+    __article = Article
+    __quantity = 0
     # endregion private attributes
 
     def __init__(self, article, quantity):
@@ -13,15 +13,15 @@ class CartItem:
         self.__quantity = quantity
 
     @property
-    def article(self) -> Article:
+    def article(self):
         return self.__article
 
     @property
-    def quantity(self) -> int:
+    def quantity(self):
         return self.__quantity
 
     @quantity.setter
-    def quantity(self, value) -> None:
+    def quantity(self, value):
         self.__quantity = value
 
 

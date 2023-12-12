@@ -6,9 +6,9 @@ from shopping.cartItem import *
 class TestCartItem(unittest.TestCase):
 
     # region private attributes
-    __cartItem: CartItem = CartItem
-    __price: float = 0.00
-    __quantity: int = 0
+    __cartItem = CartItem
+    __price = 0.00
+    __quantity = 0
     # endregion private attributes
 
     def setUp(self):
@@ -22,7 +22,7 @@ class TestCartItem(unittest.TestCase):
         self.__price = float(2.00)
         # when
         # Event will be triggered by constructor
-        self.__cartItem.article.price = self.__price
+
         # then
         self.assertEqual(self.__cartItem.article.price, self.__price)
         self.assertEqual(self.__cartItem.quantity, self.__quantity)

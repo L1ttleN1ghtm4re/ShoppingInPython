@@ -1,26 +1,63 @@
+import this
 from shopping.cartItem import CartItem
 
 
 class Cart:
     # region private attributes
-    __cartItems: CartItem = [CartItem]
+    __cartItems = []
     # endregion private attributes
 
-    def add(self):
-        raise NotImplementedError
+    def __init__(self):
+        self.__cartItems = []
+
+    def add(self, cartitems_to_add):
+        for cartItem in cartitems_to_add:
+            self.__cartItems.append(cartItem)
 
     def remove(self):
         raise NotImplementedError
 
     @property
     def cartitems(self):
-        raise NotImplementedError
+        return self.__cartItems
 
-    def doesexist(self):
-        raise NotImplementedError
+    def price(self, average: bool = False):
+        currentcartprice = 0.00
+        for cartItem in self.__cartItems:
+            currentcartprice += cartItem.article.price * cartItem.quantity
+        if average:
+            return currentcartprice / len(self.__cartItems)
+        return currentcartprice
+
+    def doesexist(self, articleid):
+        if self.getarticlebyid(articleid) is None:
+            return False
+        return True
 
     def cheapest(self):
-        raise NotImplementedError
+        currentchepeastarticleid = self.__cartItems[0].article.id
+        for cartItem in self.__cartItems:
+            if cartItem.article.price < self.getarticlebyid(currentchepeastarticleid).price:
+                currentchepeastarticleid = cartItem.article.id
+        return currentchepeastarticleid
 
     def mostexpensive(self):
-        raise NotImplementedError
+        currentchepeastarticleid = self.__cartItems[0].article.id
+        for cartItem in self.__cartItems:
+            if cartItem.article.price > self.getarticlebyid(currentchepeastarticleid).price:
+                currentchepeastarticleid = cartItem.article.id
+        return currentchepeastarticleid
+
+    def getarticlebyid(self, articleid):
+        for cartItem in self.__cartItems:
+            if cartItem.article.id == articleid:
+                return cartItem.article
+        return None
+
+
+class CartException(Exception):
+    pass
+
+
+class ArticleNotFoundException(CartException):
+    pass
