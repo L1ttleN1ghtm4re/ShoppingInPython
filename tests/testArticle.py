@@ -48,7 +48,7 @@ class TestArticle(unittest.TestCase):
 
         # when
         with self.assertRaises(ErrorTooShortDescriptionException):
-            check_description("TooShort")
+            self.__article.description = "TooShort"
         # then
         # throw exception
 
@@ -57,7 +57,7 @@ class TestArticle(unittest.TestCase):
 
         # when
         with self.assertRaises(ErrorSpecialCharInDescriptionException):
-            check_description("Jacques+Daniel")
+            self.__article.description = "Jacques+Daniel"
         # then
         # throw exception
 
@@ -65,7 +65,7 @@ class TestArticle(unittest.TestCase):
         # given
         # when
         with self.assertRaises(ErrorTooLongDescriptionException):
-            check_description("A very very very very very loonnng descriptioooooon")
+            self.__article.description = "A very very very very very loonnng descriptioooooon"
         # then
         # throw exception
 

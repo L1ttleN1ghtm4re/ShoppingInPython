@@ -32,22 +32,22 @@ class Article:
     def price(self, value: float) -> None:
         self.__price: float = value
 
+    @staticmethod
+    def __check_description(description_to_check: str) -> bool:
 
-def check_description(description_to_check: str) -> bool:
+        special_chars: [str] = ['!', '*', '+', '/']
 
-    special_chars: [str] = ['!', '*', '+', '/']
+        for special_char in special_chars:
+            if special_char in description_to_check:
+                raise ErrorSpecialCharInDescriptionException()
 
-    for special_char in special_chars:
-        if special_char in description_to_check:
-            raise ErrorSpecialCharInDescriptionException()
+        if len(description_to_check.split(' ')) == 1:
+            raise ErrorTooShortDescriptionException()
 
-    if len(description_to_check.split(' ')) == 1:
-        raise ErrorTooShortDescriptionException()
+        if len(description_to_check) > 50:
+            raise ErrorTooLongDescriptionException()
 
-    if len(description_to_check) > 50:
-        raise ErrorTooLongDescriptionException()
-
-    return True
+        return True
 
 
 class ArticleException(Exception):
@@ -65,13 +65,3 @@ class ErrorTooShortDescriptionException(ArticleException):
 
 class ErrorTooLongDescriptionException(ArticleException):
     pass
-
-
-try:
-    check_description("Description to check.")
-except ErrorSpecialCharInDescriptionException:
-    print("Special character founded in description.")
-except ErrorTooShortDescriptionException:
-    print("This description is to short.")
-except ErrorTooLongDescriptionException:
-    print("This description is to long.")
