@@ -1,4 +1,3 @@
-import this
 from shopping.cartItem import CartItem
 
 

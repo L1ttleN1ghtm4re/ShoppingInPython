@@ -1,4 +1,5 @@
 import unittest
+
 from tests.articleGenerator import ArticleGenerator
 from shopping.cart import *
 
