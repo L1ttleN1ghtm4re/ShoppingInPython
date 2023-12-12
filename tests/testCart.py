@@ -5,11 +5,15 @@ from shopping.cart import *
 
 class TestCart(unittest.TestCase):
     # region private attributes
+
     __cart = Cart
     # endregion private attributes
 
     def setUp(self):
         self.__cart = Cart()
+
+    _cart: Cart
+    # endregion private attributes
 
     def test_add_firstSingleCartItem_success(self):
         # given

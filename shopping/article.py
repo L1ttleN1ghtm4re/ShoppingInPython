@@ -17,32 +17,21 @@ class Article:
         return self.__articleid
 
     @property
-    def description(self):
+    def description(self) -> str:
         return self.__description
 
     @description.setter
-    def description(self, value):
+    def description(self, value) -> None:
         self.__description = value
 
     @property
-    def price(self):
+    def price(self) -> float:
         return self.__price
 
-
-class ArticleException(Exception):
-    pass
-
-
-class SpecialCharInDescriptionException(ArticleException):
-    pass
-
-
-class TooShortDescriptionException(ArticleException):
-    pass
-
-
-class TooLongDescriptionException(ArticleException):
-    pass
+    @price.setter
+    def price(self, value) -> None:
+        self.__price = value
+    # NOTE : could indicate there's none to return ex : -> none:
 
 
 def check_description(description_to_check):
@@ -60,6 +49,23 @@ def check_description(description_to_check):
         raise TooLongDescriptionException()
 
     return True
+
+
+class ArticleException(Exception):
+    pass
+# should have his own page for any exception
+
+
+class SpecialCharInDescriptionException(ArticleException):
+    pass
+
+
+class TooShortDescriptionException(ArticleException):
+    pass
+
+
+class TooLongDescriptionException(ArticleException):
+    pass
 
 
 # Appel de la fonction avec gestion des exceptions

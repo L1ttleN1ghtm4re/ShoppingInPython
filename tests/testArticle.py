@@ -5,27 +5,28 @@ from shopping.article import *
 class TestArticle(unittest.TestCase):
 
     # region private attributes
-    __article = None
-    __id = 0
-    __description = ""
-    __price = 0.0
+    __article: Article = Article
+    __id: int = 0
+    __description: str = ""
+    __price: float = 0.0
     # endregion private attributes
 
+    # region public methods
     def setUp(self):
-        # Private attributes
         self.__id = 1
         self.__description = "product description"
         self.__price = 20.45
         self.__article = Article(self.__id, self.__description, self.__price)
 
-    def test_all_properties_after_instantiation_success(self):
+    def test_allProperties_afterInstantiation_success(self):
         # given
         # then
-        self.assertEqual(self.__id, self.__article.id)
-        self.assertEqual(self.__description, self.__article.description)
+        self.assertEqual(self.__article.id, self.__id)
+        self.assertEqual(self.__article.description, self.__description)
         self.assertEqual(self.__article.price, self.__price)
 
-    def test_description_short_description_return_new_value(self):
+    # region description
+    def test_description_shortDescription_returnNewValue(self):
         # given
         self.expected_description = "After Shave"
         # when
@@ -33,15 +34,15 @@ class TestArticle(unittest.TestCase):
         # then
         self.assertEqual(self.__article.description, self.expected_description)
 
-    def test_description_long_description_return_new_value(self):
+    def test_description_longDescription_returnNewValue(self):
         # given
-        self.expected_description = "A very long long long long long long descriptionn"
+        self.expected_description = "A very long long long long long long description"
         # when
         self.__article.description = self.expected_description
         # then
         self.assertEqual(self.__article.description, self.expected_description)
 
-    def test_description_single_word_description_throw_exception(self):
+    def test_description_singleWordDescription_throwException(self):
         # given
 
         # when
@@ -50,7 +51,7 @@ class TestArticle(unittest.TestCase):
         # then
         # throw exception
 
-    def test_description_descriptioncontainingspecialchars_throwexception(self):
+    def test_description_descriptionContainingSpecialChars_throwException(self):
         # given
 
         # when
@@ -59,13 +60,29 @@ class TestArticle(unittest.TestCase):
         # then
         # throw exception
 
-    def test_description_toolongdescription_throwexception(self):
+    def test_description_tooLongDescription_throwException(self):
         # given
         # when
         with self.assertRaises(TooLongDescriptionException):
             check_description("A very very very very very looonnng descriptioooooon")
         # then
         # throw exception
+
+    # endregion description
+
+    # region price
+    def test_price_updatePrice_getNewValue(self):
+        # given
+        self.expected_price = 12.20
+        # when
+        self.__article.price = self.expected_price
+        # then
+        self.assertEqual(self.__article.price, self.expected_price)
+
+    # TODO: Add PriceUpdateWithNegativeValue => WrongPriceException
+    # TODO: Add PriceUpdateSameValue => WrongPriceException
+    # endregion price
+    # endregion public methods
 
 
 if __name__ == '__main__':

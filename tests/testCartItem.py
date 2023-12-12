@@ -16,18 +16,18 @@ class TestCartItem(unittest.TestCase):
         self.__articles = ArticleGenerator.generate(1)
         self.__cartItem = CartItem(self.__articles[0], self.__quantity)
 
-    def test_AllProperties_AfterInstantiation_Success(self):
+    def test_allProperties_afterInstantiation_success(self):
         # given
         # refer to Setup
-        self._price = 2.00
+        self.__price = float(2.00)
         # when
         # Event will be triggered by constructor
 
         # then
-        self.assertEqual(self.__cartItem.article.price, self._price)
+        self.assertEqual(self.__cartItem.article.price, self.__price)
         self.assertEqual(self.__cartItem.quantity, self.__quantity)
 
-    def test_SetQuantity_CorrectValue_GetNewValue(self):
+    def test_quantity_correctValue_getNewValue(self):
         # given
         self.expected_quantity = 2
         # when
@@ -35,7 +35,7 @@ class TestCartItem(unittest.TestCase):
         # then
         self.assertEqual(self.__cartItem._quantity, self.expected_quantity)
 
-    def test_SetQuantity_WrongValue_ThrowException(self):
+    def test_quantity_wrongValue_throwException(self):
         # given
         self.expected_quantity = -2
         # when

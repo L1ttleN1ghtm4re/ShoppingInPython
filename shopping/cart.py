@@ -5,7 +5,6 @@ from shopping.cartItem import CartItem
 class Cart:
     # region private attributes
     __cartItems = []
-
     # endregion private attributes
 
     def __init__(self):
