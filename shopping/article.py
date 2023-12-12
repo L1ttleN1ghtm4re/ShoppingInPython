@@ -2,51 +2,50 @@
 class Article:
 
     # region private attributes
-    __articleid = 0
-    __description = ""
-    __price = 0.0
+    __id_: int = 0
+    __description: str = ""
+    __price: float = 0.0
     # endregion private attributes
 
-    def __init__(self, articleid, description, price):
-        self.__articleid = articleid
-        self.__description = description
-        self.__price = price
+    def __init__(self, id_: int, description: str, price: float) -> None:
+        self.__id_: int = id_
+        self.__description: str = description
+        self.__price: float = price
 
     @property
-    def id(self):
-        return self.__articleid
+    def id(self) -> int:
+        return self.__id_
 
     @property
     def description(self) -> str:
         return self.__description
 
     @description.setter
-    def description(self, value) -> None:
-        self.__description = value
+    def description(self, value: str) -> None:
+        self.__description: str = value
 
     @property
     def price(self) -> float:
         return self.__price
 
     @price.setter
-    def price(self, value) -> None:
-        self.__price = value
-    # NOTE : could indicate there's none to return ex : -> none:
+    def price(self, value: float) -> None:
+        self.__price: float = value
 
 
-def check_description(description_to_check):
+def check_description(description_to_check: str) -> bool:
 
-    special_chars = ['!', '*', '+', '/']
+    special_chars: [str] = ['!', '*', '+', '/']
 
     for special_char in special_chars:
         if special_char in description_to_check:
-            raise SpecialCharInDescriptionException()
+            raise ErrorSpecialCharInDescriptionException()
 
     if len(description_to_check.split(' ')) == 1:
-        raise TooShortDescriptionException()
+        raise ErrorTooShortDescriptionException()
 
     if len(description_to_check) > 50:
-        raise TooLongDescriptionException()
+        raise ErrorTooLongDescriptionException()
 
     return True
 
@@ -56,24 +55,23 @@ class ArticleException(Exception):
 # should have his own page for any exception
 
 
-class SpecialCharInDescriptionException(ArticleException):
+class ErrorSpecialCharInDescriptionException(ArticleException):
     pass
 
 
-class TooShortDescriptionException(ArticleException):
+class ErrorTooShortDescriptionException(ArticleException):
     pass
 
 
-class TooLongDescriptionException(ArticleException):
+class ErrorTooLongDescriptionException(ArticleException):
     pass
 
 
-# Appel de la fonction avec gestion des exceptions
 try:
-    check_description("Description à vérifier")
-except SpecialCharInDescriptionException:
-    print("Caractère spécial trouvé dans la description.")
-except TooShortDescriptionException:
-    print("La description est trop courte.")
-except TooLongDescriptionException:
-    print("La description est trop longue.")
+    check_description("Description to check.")
+except ErrorSpecialCharInDescriptionException:
+    print("Special character founded in description.")
+except ErrorTooShortDescriptionException:
+    print("This description is to short.")
+except ErrorTooLongDescriptionException:
+    print("This description is to long.")
