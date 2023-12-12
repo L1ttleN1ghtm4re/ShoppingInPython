@@ -7,6 +7,7 @@ class Article:
     __price: float = 0.0
     # endregion private attributes
 
+    # region public methods
     def __init__(self, id_: int, description: str, price: float) -> None:
         self.__id_: int = id_
         self.__description: str = description
@@ -33,6 +34,9 @@ class Article:
     def price(self, value: float) -> None:
         self.__price: float = value
 
+    # endregion public methods
+
+    # region private methods
     @staticmethod
     def __check_description(description_to_check: str) -> bool:
 
@@ -49,11 +53,11 @@ class Article:
             raise ErrorTooLongDescriptionException()
 
         return True
+    # endregion private methods
 
 
 class ArticleException(Exception):
     pass
-# should have his own page for any exception
 
 
 class ErrorSpecialCharInDescriptionException(ArticleException):

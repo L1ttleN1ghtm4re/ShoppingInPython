@@ -79,9 +79,7 @@ class TestArticle(unittest.TestCase):
         self.__article.price = self.expected_price
         # then
         self.assertEqual(self.__article.price, self.expected_price)
-
-    # TODO: Add PriceUpdateWithNegativeValue => WrongPriceException
-    # TODO: Add PriceUpdateSameValue => WrongPriceException
+        
     # endregion price
     # endregion public methods
 
