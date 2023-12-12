@@ -22,6 +22,7 @@ class Article:
 
     @description.setter
     def description(self, value: str) -> None:
+        self.__check_description(value)
         self.__description: str = value
 
     @property
