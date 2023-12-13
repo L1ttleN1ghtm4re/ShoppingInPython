@@ -17,7 +17,8 @@ class TestArticle(unittest.TestCase):
         self.__id_: int = 1
         self.__description: str = "product description"
         self.__price: float = 20.45
-        self.__article: Article = Article(self.__id_, self.__description, self.__price)
+        self.__article: Article = Article(self.__id_, self.__description,
+                                          self.__price)
 
     def test_allProperties_afterInstantiation_success(self):
         # given
@@ -33,15 +34,18 @@ class TestArticle(unittest.TestCase):
         # when
         self.__article.description = self.expected_description
         # then
-        self.assertEqual(self.__article.description, self.expected_description)
+        self.assertEqual(self.__article.description,
+                         self.expected_description)
 
     def test_description_longDescription_returnNewValue(self):
         # given
-        self.expected_description: str = "A very long long long long long long description"
+        self.expected_description: str = ("A very long long long long long "
+                                          "long description")
         # when
         self.__article.description = self.expected_description
         # then
-        self.assertEqual(self.__article.description, self.expected_description)
+        self.assertEqual(self.__article.description,
+                         self.expected_description)
 
     def test_description_singleWordDescription_throwException(self):
         # given
@@ -65,7 +69,8 @@ class TestArticle(unittest.TestCase):
         # given
         # when
         with self.assertRaises(ErrorTooLongDescriptionException):
-            self.__article.description = "A very very very very very loonnng descriptioooooon"
+            self.__article.description = ("A very very very very very "
+                                          "loonnng descriptioooooon")
         # then
         # throw exception
 
