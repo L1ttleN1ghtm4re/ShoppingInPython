@@ -7,20 +7,22 @@ from shopping.cartItem import *
 class TestCartItem(unittest.TestCase):
 
     # region private attributes
-    __cartItem = CartItem
-    __price = 0.00
-    __quantity = 0
+    __cartItem: CartItem = CartItem
+    __price: float = 0.00
+    __quantity: int = 0
     # endregion private attributes
 
+    # region public methods
     def setUp(self):
-        self.__quantity = 1
-        self.__articles = ArticleGenerator.generate(1)
-        self.__cartItem = CartItem(self.__articles[0], self.__quantity)
+        self.__quantity: int = 1
+        self.__articles: [Article] = ArticleGenerator.generate(1)
+        self.__cartItem: CartItem = CartItem(self.__articles[0],
+                                             self.__quantity)
 
     def test_allProperties_afterInstantiation_success(self):
         # given
         # refer to Setup
-        self.__price = float(2.00)
+        self.__price: float = 2.00
         # when
         # Event will be triggered by constructor
 
@@ -28,18 +30,26 @@ class TestCartItem(unittest.TestCase):
         self.assertEqual(self.__cartItem.article.price, self.__price)
         self.assertEqual(self.__cartItem.quantity, self.__quantity)
 
+    # region quantity
     def test_quantity_correctValue_getNewValue(self):
         # given
-        self.expected_quantity = 2
+        self.expected_quantity: int = 2
         # when
         self.__cartItem._quantity = self.expected_quantity
         # then
-        self.assertEqual(self.__cartItem._quantity, self.expected_quantity)
+        self.assertEqual(self.__cartItem._quantity,
+                         self.expected_quantity)
 
     def test_quantity_wrongValue_throwException(self):
         # given
-        self.expected_quantity = -2
+        self.expected_quantity: int = -2
         # when
         self.assertRaises(WrongQuantityException)
         # then
         # throw exception
+    # endregion quantity
+    # endregion public methods
+
+
+if __name__ == '__main__':
+    unittest.main()
