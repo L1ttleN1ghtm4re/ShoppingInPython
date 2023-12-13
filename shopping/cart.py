@@ -3,55 +3,57 @@ from shopping.cartItem import CartItem
 
 class Cart:
     # region private attributes
-    __cartItems = []
+    __cartItems: [CartItem] = []
     # endregion private attributes
 
+    # region public methods
     def __init__(self):
-        self.__cartItems = []
+        self.__cartItems: [CartItem] = []
 
-    def add(self, cartitems_to_add):
-        for cartItem in cartitems_to_add:
+    def add(self, cart_items_to_add: [CartItem]) -> None:
+        for cartItem in cart_items_to_add:
             self.__cartItems.append(cartItem)
 
-    def remove(self):
+    def remove(self) -> None:
         raise NotImplementedError
 
     @property
-    def cartitems(self):
+    def cart_items(self) -> [CartItem]:
         return self.__cartItems
 
-    def price(self, average: bool = False):
-        currentcartprice = 0.00
+    def price(self, average: bool = False) -> float:
+        current_cart_price = 0.00
         for cartItem in self.__cartItems:
-            currentcartprice += cartItem.article.price * cartItem.quantity
+            current_cart_price += cartItem.article.price * cartItem.quantity
         if average:
-            return currentcartprice / len(self.__cartItems)
-        return currentcartprice
+            return current_cart_price / len(self.__cartItems)
+        return current_cart_price
 
-    def doesexist(self, articleid):
-        if self.getarticlebyid(articleid) is None:
+    def does_exist(self, article_id: int) -> bool:
+        if self.get_article_by_id(article_id) is None:
             return False
         return True
 
-    def cheapest(self):
-        currentchepeastarticleid = self.__cartItems[0].article.id
+    def cheapest(self) -> int:
+        current_cheapest_article_id = self.__cartItems[0].article.id
         for cartItem in self.__cartItems:
-            if cartItem.article.price < self.getarticlebyid(currentchepeastarticleid).price:
-                currentchepeastarticleid = cartItem.article.id
-        return currentchepeastarticleid
+            if cartItem.article.price < self.get_article_by_id(current_cheapest_article_id).price:
+                current_cheapest_article_id = cartItem.article.id
+        return current_cheapest_article_id
 
-    def mostexpensive(self):
-        currentchepeastarticleid = self.__cartItems[0].article.id
+    def most_expensive(self):
+        current_cheapest_article_id = self.__cartItems[0].article.id
         for cartItem in self.__cartItems:
-            if cartItem.article.price > self.getarticlebyid(currentchepeastarticleid).price:
-                currentchepeastarticleid = cartItem.article.id
-        return currentchepeastarticleid
+            if cartItem.article.price > self.get_article_by_id(current_cheapest_article_id).price:
+                current_cheapest_article_id = cartItem.article.id
+        return current_cheapest_article_id
 
-    def getarticlebyid(self, articleid):
+    def get_article_by_id(self, article_id):
         for cartItem in self.__cartItems:
-            if cartItem.article.id == articleid:
+            if cartItem.article.id == article_id:
                 return cartItem.article
         return None
+    # endregion public methods
 
 
 class CartException(Exception):
