@@ -6,14 +6,14 @@ class CartItem:
     # region private attributes
     __article: Article = Article
     __quantity: int = 0
-    __foradultonly: bool
+    __forAdultOnly: bool
     # endregion private attributes
 
     # region public methods
-    def __init__(self, article: Article, quantity: int, foradultonly: bool = False):
+    def __init__(self, article: Article, quantity: int, for_adult_only: bool = False):
         self.__article: Article = article
         self.__quantity: int = quantity
-        self.__foradultonly: bool = foradultonly
+        self.__forAdultOnly: bool = for_adult_only
 
     @property
     def article(self) -> Article:
@@ -32,11 +32,11 @@ class CartItem:
 
     @property
     def for_adult_only(self) -> bool:
-        return self.__foradultonly
+        return self.__forAdultOnly
 
     @for_adult_only.setter
     def for_adult_only(self, value) -> None:
-        self.__foradultonly = value
+        self.__forAdultOnly = value
 
 
 class CartItemException(Exception):
