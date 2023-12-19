@@ -29,6 +29,20 @@ class TestCartItem(unittest.TestCase):
         # then
         self.assertEqual(self.__cartItem.article.price, self.__price)
         self.assertEqual(self.__cartItem.quantity, self.__quantity)
+        self.assertFalse(self.__cartItem.for_adult_only)
+
+    def test_AllProperties_AfterInstantiationWithForAdultOnlyOption_GetTrue(self):
+        # given
+        # refer to Setup
+        self.__price: float = 2.00
+        self.__cartItem.for_adult_only = True
+        # when
+        # Event will be triggered by constructor
+
+        # then
+        self.assertEqual(self.__cartItem.article.price, self.__price)
+        self.assertEqual(self.__cartItem.quantity, self.__quantity)
+        self.assertTrue(self.__cartItem.for_adult_only)
 
     # region quantity
     def test_quantity_correctValue_getNewValue(self):
