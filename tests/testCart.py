@@ -163,7 +163,7 @@ class TestCart(unittest.TestCase):
         # then
         self.assertEqual(10, self.__cart.most_expensive())
 
-    def ApplyDiscountById_ArticleExists_PriceUpdated(self):
+    def test_ApplyDiscountById_ArticleExists_PriceUpdated(self):
         # given
         self.discountToApply: float = 0.1
         self.articleToApplyDiscount: int = 45
@@ -177,7 +177,7 @@ class TestCart(unittest.TestCase):
         # then
         # throw exception
 
-    def ApplyDiscountById_ArticleDoesNotExist_ThrowException(self):
+    def test_ApplyDiscountById_ArticleDoesNotExist_ThrowException(self):
         # given
         self.discountToApply: float = 0.1
         self.articleToApplyDiscount: int = 45
