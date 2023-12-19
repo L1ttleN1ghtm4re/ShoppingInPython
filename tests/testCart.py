@@ -170,7 +170,7 @@ class TestCart(unittest.TestCase):
         self.expectedArticles: [Article] = ArticleGenerator.generate(5)
         self.cartItems: [CartItem] = []
         for articles in self.expectedArticles:
-            self.__cart.add(self.cartItems(articles, 1))
+            self.cartItems.append(CartItem(articles, 1))
         self.__cart.add([self.cartItems])
         # when
         self.assertEqual(29.60, self.__cart.price())
@@ -184,7 +184,7 @@ class TestCart(unittest.TestCase):
         self.expectedArticles: [Article] = ArticleGenerator.generate(5)
         self.cartItems: [CartItem] = []
         for articles in self.expectedArticles:
-            self.__cart.add(self.cartItems(articles, 1))
+            self.cartItems.append(CartItem(articles, 1))
         self.__cart.add([self.cartItems])
         # when
         self.assertRaises(ArticleNotFoundException)
