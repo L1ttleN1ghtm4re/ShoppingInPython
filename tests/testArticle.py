@@ -84,7 +84,23 @@ class TestArticle(unittest.TestCase):
         self.__article.price = self.expected_price
         # then
         self.assertEqual(self.__article.price, self.expected_price)
-        
+
+    def test_Price_UpdatePriceWithNegativeValue_ThrowException(self):
+        # given
+        self.expectedNewPrice: float = -22.0
+        # when
+        self.assertRaises(WrongPriceException)
+        # then
+        # throw exception
+
+    def test_Price_UpdatePriceWithSameValueAsCurrent_ThrowException(self):
+        # given
+        # refer to Setup
+        # when
+        self.assertRaises(WrongPriceException)
+        # then
+        # throw exception
+
     # endregion price
     # endregion public methods
 

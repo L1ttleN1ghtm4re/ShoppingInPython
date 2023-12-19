@@ -70,3 +70,7 @@ class ErrorTooShortDescriptionException(ArticleException):
 
 class ErrorTooLongDescriptionException(ArticleException):
     pass
+
+
+class WrongPriceException(ArticleException):
+    pass
