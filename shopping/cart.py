@@ -48,6 +48,13 @@ class Cart:
                 current_cheapest_article_id = cartItem.article.id
         return current_cheapest_article_id
 
+    def apply_discount_by_id(self, percentage_discount: float, article_id_to_apply_discount: int):
+        if not self.does_exist(article_id_to_apply_discount):
+            raise ArticleNotFoundException()
+        for cartItem in self.__cartItems:
+            if cartItem.article.id == article_id_to_apply_discount:
+                cartItem.article.price = cartItem.article.price - (cartItem.article.price * percentage_discount)
+
     def get_article_by_id(self, article_id):
         for cartItem in self.__cartItems:
             if cartItem.article.id == article_id:

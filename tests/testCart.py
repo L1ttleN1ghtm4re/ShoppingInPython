@@ -166,16 +166,16 @@ class TestCart(unittest.TestCase):
     def test_ApplyDiscountById_ArticleExists_PriceUpdated(self):
         # given
         self.discountToApply: float = 0.1
-        self.articleToApplyDiscount: int = 45
+        self.articleToApplyDiscount: int = 2
         self.expectedArticles: [Article] = ArticleGenerator.generate(5)
         self.cartItems: [CartItem] = []
         for articles in self.expectedArticles:
             self.cartItems.append(CartItem(articles, 1))
-        self.__cart.add([self.cartItems])
+        self.__cart.add(self.cartItems)
         # when
-        self.assertEqual(29.60, self.__cart.price())
+        self.__cart.apply_discount_by_id(self.discountToApply, self.articleToApplyDiscount)
         # then
-        # throw exception
+        self.assertEqual(29.60, self.__cart.price())
 
     def test_ApplyDiscountById_ArticleDoesNotExist_ThrowException(self):
         # given
@@ -185,8 +185,7 @@ class TestCart(unittest.TestCase):
         self.cartItems: [CartItem] = []
         for articles in self.expectedArticles:
             self.cartItems.append(CartItem(articles, 1))
-        self.__cart.add([self.cartItems])
+        self.__cart.add(self.cartItems)
         # when
         self.assertRaises(ArticleNotFoundException)
-        # then
         # throw exception
